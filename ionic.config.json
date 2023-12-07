@@ -1,0 +1,7 @@
+{
+  "name": "Luminaa.Chat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
