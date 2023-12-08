@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" default-href="employee"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Einstellungen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--  <ion-header collapse="condense">-->
+  <!--    <ion-toolbar>-->
+  <!--      <ion-title size="large">ConfigView</ion-title>-->
+  <!--    </ion-toolbar>-->
+  <!--  </ion-header>-->
+
+  <div class="flex-col justify-center items-center text-center">
+
+    <div class="flex-col mt-4">
+      <div class="avatar">
+        <div class="w-36 rounded-full ring ring-positive ring-offset-base-100 ring-offset-2">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <p class="mt-2 font-bold text-xl">
+        {{appStore.getUserName().firstName}}
+      </p>
+      <p>
+        {{appStore.getUserName().lastName}}
+      </p>
+    </div>
+
+    <div class="mt-8">
+      <ion-list [inset]="true">
+        <ion-item button [routerLink]="['./imprint']">
+          <ion-label>
+            <h2>Impressum</h2>
+            <p>Subtitle</p>
+          </ion-label>
+        </ion-item>
+        <ion-item button [routerLink]="['./privacy']">
+          <ion-label>
+            <h2>Datenschutzerklärung</h2>
+            <p>Subtitle</p>
+          </ion-label>
+        </ion-item>
+        <ion-item button [routerLink]="['./terms']">
+          <ion-label>
+            <h2>Allgemine Geschäftsbedingungen</h2>
+            <p>Subtitle</p>
+          </ion-label>
+        </ion-item>
+        <ion-item button [routerLink]="['./foss']">
+          <ion-label>
+            <h2>FOSS</h2>
+            <p>Subtitle</p>
+          </ion-label>
+        </ion-item>
+        <ion-item button [routerLink]="['./licences']">
+          <ion-label>
+            <h2>Lizenzen</h2>
+            <p>Subtitle</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+    </div>
+
+    <div class="mt-16">
+      <button class="btn btn-error btn-wide " (click)="appStore.logout()">
+        Logout
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</ion-content>

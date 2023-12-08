@@ -1,0 +1,46 @@
+<div class="flex justify-items-center content-center my-2 text-white">
+
+  <div class="flex-none pr-2 flex items-center">
+    <div class="flex items-center justify-center rounded-full  w-10 h-10" [ngClass]="{'bg-primary text-black': type === 'internal', 'bg-secondary-content': type !== 'internal'}">
+
+      @if (type === 'group') {
+      <ion-icon slot="icon-only" src="../assets/heroicons/group.svg"></ion-icon>
+      }
+
+      @if (type === 'direct') {
+      <ion-icon slot="icon-only" src="../assets/heroicons/user.svg"></ion-icon>
+      }
+
+      @if (type === 'internal') {
+      <ion-icon slot="icon-only" src="../assets/heroicons/house.svg"></ion-icon>
+      }
+
+    </div>
+  </div>
+
+  <div class="flex-grow">
+    <div class="font-semibold">{{sender}}</div>
+    <div class="text-sm italic font-light line-clamp-1" [ngClass]="{'text-primary': !seen && !delivered }">{{lastMessage}}</div>
+  </div>
+
+  <div class="flex-none pr-2">
+    <div class="text-sm font-light">
+      {{date}}
+    </div>
+    <div class="avatar-group -space-x-1.5 rtl:space-x-reverse justify-end text-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 " [ngClass]="{ 'text-black fill-primary': delivered }">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" [ngClass]="{ 'text-black fill-primary': seen}">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="flex-none flex items-center text-primary font-extrabold">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg>
+  </div>
+
+</div>

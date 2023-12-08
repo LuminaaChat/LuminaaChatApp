@@ -1,0 +1,21 @@
+<div class="chat " [ngClass]="{'chat-end': isSender, 'chat-start': !isSender}">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+    </div>
+  </div>
+  <div class="chat-header text-positiv">
+    @if(!isSender) {
+    {{message.sender}}
+    } @else {
+     Du
+    }
+    <time class="text-xs opacity-50 ">{{message.createdAt | date: 'HH:mm'}}</time>
+  </div>
+  <div class="chat-bubble" [ngClass]="{'bg-primary text-black': isSender, 'bg-secondary-content text-white': !isSender}">{{message.message}}</div>
+  <div class="chat-footer opacity-50">
+    @if(!isSender) {
+    <p class="text-xs">Gelesen um {{message.seenAt | date: 'HH:mm'}}</p>
+    }
+  </div>
+</div>

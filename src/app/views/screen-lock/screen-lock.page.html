@@ -1,0 +1,53 @@
+<!--<ion-header [translucent]="true">-->
+<!--  <ion-toolbar>-->
+<!--    <ion-title>Gesperrt</ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
+
+<ion-content [fullscreen]="true">
+<!--  <ion-header collapse="condense">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title size="large">ScreenLock</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
+  <div class="flex flex-col justify-items-center items-center h-screen bg-primary-content text-base-100">
+
+    <div class="flex-none">
+      <img src="assets/img/jho.png" alt="" class="w-56">
+    </div>
+
+    <div class="flex-grow px-8 mt-16">
+      <div class="flex space-x-4">
+        <input type="password" maxlength="1" placeholder="*" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16 w-16 text-center" [(ngModel)]="digit1" name="digit1" (keyup)="onDigitInput($event)" [disabled]="loadingState" />
+        <input type="password" maxlength="1" placeholder="*" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16 w-16 text-center" [(ngModel)]="digit2" name="digit2" (keyup)="onDigitInput($event)" [disabled]="loadingState"/>
+        <input type="password" maxlength="1" placeholder="*" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16 w-16 text-center" [(ngModel)]="digit3" name="digit3" (keyup)="onDigitInput($event)" [disabled]="loadingState"/>
+        <input type="password" maxlength="1" placeholder="*" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16 w-16 text-center" [(ngModel)]="digit4" name="digit4" (keyup)="onDigitInput($event)" [disabled]="loadingState"/>
+      </div>
+
+      <div class="flex justify-center mt-24">
+        @if (loadingState) {
+        <button class="btn btn-primary mb-3 btn-wide rounded-full text-lg">
+          <span class="loading loading-infinity loading-lg"></span>
+          Ein Moment...
+        </button>
+        } @else {
+        <button class="btn btn-primary mb-3 btn-wide rounded-full text-lg" [disabled]="pin.length < 4" (click)="onClickPin()">Entsperren</button>
+        }
+      </div>
+    </div>
+
+    <div class="flex-grow justify-center">
+      <!--    <a class="text-primary" routerLink="../forgot">Passwort vergessen?</a>-->
+    </div>
+
+    <div class="flex-none flex mb-8 text-primary">
+      <a>Impressum</a>
+      <div class="mx-4">
+        |
+      </div>
+      <a>Datenschutzbestimmungen</a>
+    </div>
+  </div>
+
+
+</ion-content>
