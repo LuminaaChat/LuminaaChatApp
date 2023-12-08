@@ -1,17 +1,26 @@
 {
-  "name": "Luminaa.Chat",
+  "name": "luminaa.chat",
+  "description": "Mobile App for luminaa.chat",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Open Source Group of luminaa.chat",
+  "git": "https://github.com/LuminaaChat/LuminaaChatApp/",
+  "homepage": "https://docs.luminaa.chat/",
+  "bugs": {
+    "url": "https://github.com/LuminaaChat/LuminaaChatApp/issues"
+  },
+  "license":  "AGPL-3.0-or-later",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "start": "ionic serve",
+    "start:public": "ionic server --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "dev:ios": "ionic cap run ios -l --external",
-    "dev:android": "ionic cap run android -l --external"
+    "sync": "ionic cap sync",
+    "emu:ios": "ionic cap run ios -l --external",
+    "emu:android": "ionic cap run android -l --external",
+    "open:ios": "ionic cap open ios",
+    "open:android": "ionic cap open android"
   },
   "private": true,
   "dependencies": {
@@ -68,6 +77,5 @@
     "tailwindcss": "^3.3.6",
     "ts-node": "^8.3.0",
     "typescript": "~5.2.2"
-  },
-  "description": "An Ionic project"
+  }
 }
