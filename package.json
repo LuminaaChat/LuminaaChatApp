@@ -8,19 +8,22 @@
   "bugs": {
     "url": "https://github.com/LuminaaChat/LuminaaChatApp/issues"
   },
-  "license":  "AGPL-3.0-or-later",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "ionic serve",
     "start:public": "ionic server --host 0.0.0.0",
+    "start:ios": "ionic cap run ios",
+    "start:android": "ionic cap run android",
+    "start:ios:hotreload": "ionic cap run ios -l --external",
+    "start:android:hotreload": "ionic cap run android -l --external",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "sync": "ionic cap sync",
-    "emu:ios": "ionic cap run ios -l --external",
-    "emu:android": "ionic cap run android -l --external",
     "open:ios": "ionic cap open ios",
-    "open:android": "ionic cap open android"
+    "open:android": "ionic cap open android",
+    "gen:assets": "npx capacitor-assets generate"
   },
   "private": true,
   "dependencies": {
@@ -55,6 +58,7 @@
     "@angular/cli": "^17.0.0",
     "@angular/compiler-cli": "^17.0.2",
     "@angular/language-service": "^17.0.2",
+    "@capacitor/assets": "^3.0.1",
     "@capacitor/cli": "5.5.1",
     "@ionic/angular-toolkit": "^9.0.0",
     "@types/jasmine": "~5.1.0",
