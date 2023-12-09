@@ -22,8 +22,8 @@ export class AppStoreService {
     createdAt: '',
     updatedAt: ''
   }
-
   private token: string | null = 'awsometoken';
+  private serverUrl: string | null = null;
 
   constructor(private router: Router) { }
 
@@ -38,6 +38,14 @@ export class AppStoreService {
 
   setToken(token: string): void {
     this.token = token;
+  }
+
+  hasServerUrl(): boolean {
+    return !!this.serverUrl;
+  }
+
+  setServerUrl(serverUrl: string): void {
+    this.serverUrl = serverUrl;
   }
 
   getUserId(): string {

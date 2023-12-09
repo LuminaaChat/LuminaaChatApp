@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+<!--    <ion-buttons slot="start">-->
+<!--      <ion-back-button text="" default-href="login"></ion-back-button>-->
+<!--    </ion-buttons>-->
+    <ion-title>Herzlich Willkommen!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--  <ion-header collapse="condense">-->
+  <!--    <ion-toolbar>-->
+  <!--      <ion-title size="large">ForgotPassword</ion-title>-->
+  <!--    </ion-toolbar>-->
+  <!--  </ion-header>-->
+
+  <div class="flex-col bg-primary-content text-base-100 h-screen">
+
+
+    <div class="flex-grow flex-col space-y-8 px-8 mt-16">
+
+      <div class="flex-none">
+        <img src="assets/img/luminaa_logo.png"  alt="Luminaa Chat Logo"/>
+      </div>
+
+      <div class="flex-none">
+        <p>Bitte trag hier deine Server URL ein:</p>
+      </div>
+
+      <div class="flex-none">
+        <input type="text" placeholder="https://demo.luminaa.chat" class="input bg-secondary-content text-primary rounded-xl w-full h-16 focus:border-primary" [(ngModel)]="serverUrl" [disabled]="success || loadingState"/>
+      </div>
+
+      <div class="flex-none flex justify-center">
+        @if (loadingState) {
+        <button class="btn btn-primary mb-3 btn-wide rounded-full text-lg">
+          <span class="loading loading-infinity loading-lg"></span>
+          Ein Moment...
+        </button>
+        } @else {
+        <button class="btn btn-primary mb-3 btn-wide rounded-full text-lg" (click)="onClickChooseServer()" [disabled]="success">Speichern</button>
+        }
+      </div>
+
+    </div>
+
+
+  </div>
+
+</ion-content>
