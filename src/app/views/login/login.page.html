@@ -23,8 +23,8 @@
 
     <div class="flex-grow w-full px-8 mt-16">
       <div class="flex flex-col space-y-4">
-        <input type="text" placeholder="Email-adresse" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16" [disabled]="loadingState" [ngClass]="{'input-bordered input-error': errorState}"/>
-        <input type="password" placeholder="Password" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16" [disabled]="loadingState" [ngClass]="{'input-bordered input-error': errorState}"/>
+        <input type="text" placeholder="Email-adresse" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16" [(ngModel)]="email" name="email" [disabled]="loadingState" [ngClass]="{'input-bordered input-error': errorState}"/>
+        <input type="password" placeholder="Password" class="input bg-secondary-content text-primary focus:border-primary rounded-xl h-16" [(ngModel)]="password" name="password" [disabled]="loadingState" [ngClass]="{'input-bordered input-error': errorState}"/>
         <p class="text-error h-8">
           @if (errorState) {
           Benutzername oder Passwort Falsch

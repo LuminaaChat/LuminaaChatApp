@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import {Router, RouterLink} from "@angular/router";
 import {AppStoreService} from "../../../shared/services/app-store.service";
+import {AuthApiService} from "../../../shared/services-api/auth-api.service";
+import {User} from "../../../shared/types/user.type";
 
 @Component({
   selector: 'app-login',
@@ -13,26 +15,56 @@ import {AppStoreService} from "../../../shared/services/app-store.service";
   imports: [IonicModule, CommonModule, FormsModule, RouterLink]
 })
 export class LoginPage implements OnInit {
-
+  email: string = '';
+  password: string = '';
   loadingState: boolean = false;
   errorState: boolean = false;
 
   constructor(private router: Router,
-              private appStore: AppStoreService) {
+              private appStore: AppStoreService,
+              private authApiService: AuthApiService) {
   }
 
   onClickLogin() {
     this.errorState = false;
     this.loadingState = true;
-    setTimeout(() => {
-      this.appStore.setToken('awsometoken');
-      this.loadingState = false;
-      this.errorState = true;
-      this.router.navigate(['/lock'])
-    }, 3000);
+
+    this.authApiService.login(this.email, this.password).subscribe({
+      next: async (user: { user: User, token: string }) => {
+        this.appStore.setToken(user.token);
+        this.appStore.setUser(user.user);
+
+        if (this.appStore.hasUserRole('employee')) {
+          await this.router.navigate(['../employee']);
+        } else if (this.appStore.hasUserRole('client')) {
+          await this.router.navigate(['../client']);
+        } else {
+          this.appStore.unsetToken();
+          this.errorState = true;
+        }
+        this.loadingState = false;
+        this.email = '';
+        this.password = '';
+      },
+      error: (err) => {
+        console.log(err);
+        this.loadingState = false;
+        this.errorState = true;
+      }
+    });
+
+
+
+    // setTimeout(() => {
+    //   this.appStore.setToken('awsometoken');
+    //   this.loadingState = false;
+    //   this.errorState = true;
+    //   this.router.navigate(['/lock'])
+    // }, 3000);
   }
 
   ngOnInit() {
+    console.log(this.appStore.getServerUrl());
   }
 
 }
