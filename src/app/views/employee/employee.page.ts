@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import {ClientPage} from "../client/client.page";
 import {RouterLink} from "@angular/router";
 import {ChatListItemComponent} from "../../components/chat-list-item/chat-list-item.component";
+import {AppStoreService} from "../../../shared/services/app-store.service";
 
 @Component({
   selector: 'app-employee',
@@ -14,10 +14,14 @@ import {ChatListItemComponent} from "../../components/chat-list-item/chat-list-i
   imports: [IonicModule, CommonModule, FormsModule, RouterLink, ChatListItemComponent]
 })
 export class EmployeePage implements OnInit {
-  constructor() { }
+  firstName: string = '';
+  lastName: string = '';
+  constructor(private appStore: AppStoreService) { }
 
   ngOnInit() {
-    // this.component = ClientPage;
+    const names  = this.appStore.getUserName();
+    this.firstName = names.firstName;
+    this.lastName = names.lastName;
   }
 
 }
