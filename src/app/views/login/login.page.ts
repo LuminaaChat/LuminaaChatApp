@@ -6,6 +6,7 @@ import {Router, RouterLink} from "@angular/router";
 import {AppStoreService} from "../../../shared/services/app-store.service";
 import {AuthApiService} from "../../../shared/services-api/auth-api.service";
 import {User} from "../../../shared/types/user.type";
+import {SocketService} from "../../../shared/services/socket.service";
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router,
               private appStore: AppStoreService,
+              private socketService: SocketService,
               private authApiService: AuthApiService) {
   }
 
@@ -33,6 +35,7 @@ export class LoginPage implements OnInit {
       next: async (user: { user: User, token: string }) => {
         this.appStore.setToken(user.token);
         this.appStore.setUser(user.user);
+        this.socketService.start();
 
         if (this.appStore.hasUserRole('employee')) {
           await this.router.navigate(['../employee']);
@@ -52,15 +55,6 @@ export class LoginPage implements OnInit {
         this.errorState = true;
       }
     });
-
-
-
-    // setTimeout(() => {
-    //   this.appStore.setToken('awsometoken');
-    //   this.loadingState = false;
-    //   this.errorState = true;
-    //   this.router.navigate(['/lock'])
-    // }, 3000);
   }
 
   ngOnInit() {

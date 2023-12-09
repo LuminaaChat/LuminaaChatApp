@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import {AppStoreService} from "../shared/services/app-store.service";
 import {AuthApiService} from "../shared/services-api/auth-api.service";
 import {User} from "../shared/types/user.type";
+import {SocketService} from "../shared/services/socket.service";
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,19 @@ import {User} from "../shared/types/user.type";
   standalone: true,
   imports: [IonApp, IonRouterOutlet],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(private appStore: AppStoreService,
-              private authApiService: AuthApiService) {
+              private authApiService: AuthApiService,
+              private socketService: SocketService) {
+  }
+
+  ngOnInit(): void {
     if (this.appStore.hasToken()) {
       this.authApiService.refreshToken().subscribe({
         next: (user: {user: User, token: string}) => {
           this.appStore.setToken(user.token);
           this.appStore.setUser(user.user);
+          this.socketService.start();
         },
         error: (err) => {
           console.log(err);

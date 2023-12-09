@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import {RouterLink} from "@angular/router";
 import {ChatListItemComponent} from "../../components/chat-list-item/chat-list-item.component";
 import {AppStoreService} from "../../../shared/services/app-store.service";
+import {SocketService} from "../../../shared/services/socket.service";
 
 @Component({
   selector: 'app-employee',
