@@ -17,6 +17,7 @@ export const routes: Routes = [
   {
     path: 'forgot',
     loadComponent: () => import('./views/forgot-password/forgot-password.page').then(m => m.ForgotPasswordPage),
+    canActivate: [serverChosenGuard]
   },
   {
     path: 'login',
@@ -25,7 +26,8 @@ export const routes: Routes = [
   },
   {
     path: 'lock',
-    loadComponent: () => import('./views/screen-lock/screen-lock.page').then(m => m.ScreenLockPage)
+    loadComponent: () => import('./views/screen-lock/screen-lock.page').then(m => m.ScreenLockPage),
+    canActivate: [serverChosenGuard]
   },
   {
     path: 'client',

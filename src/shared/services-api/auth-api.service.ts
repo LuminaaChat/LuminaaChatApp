@@ -16,4 +16,7 @@ export class AuthApiService {
     return this.httpClient.post<{user: User, token: string}>(`${this.appStore.getServerUrl()}/api/v1/auth/login`, {email: email, password: password});
   }
 
+  refreshToken(): Observable<{user: User, token: string}> {
+    return this.httpClient.get<{user: User, token: string}>(`${this.appStore.getServerUrl()}/api/v1/auth/refresh`);
+  }
 }

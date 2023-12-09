@@ -8,7 +8,12 @@ import {User} from "../types/user.type";
 export class AppStoreService {
   private userData: User | null = null;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      this.userData = JSON.parse(userData);
+    }
+  }
 
   async logout(): Promise<void> {
     localStorage.removeItem('serverUrl');
@@ -23,8 +28,11 @@ export class AppStoreService {
   }
 
   setToken(token: string): void {
-    console.log('setToken: ', token)
     localStorage.setItem('token', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
   unsetToken(): void {
@@ -51,7 +59,6 @@ export class AppStoreService {
   }
 
   hasUserRole(role: string): boolean {
-    console.log('hasUserRole: ', this.userData!.roles, role, this.userData!.roles.includes(role));
     return this.userData!.roles.includes(role);
   }
 
@@ -63,7 +70,7 @@ export class AppStoreService {
   }
 
   setUser(user: User): void {
-    console.log('setUser: ', user)
+    localStorage.setItem('userData', JSON.stringify(user));
     this.userData = user;
   }
 
