@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal, WritableSignal} from '@angular/core';
 import {Router} from "@angular/router";
 import {User} from "../types/user.type";
 
@@ -6,19 +6,19 @@ import {User} from "../types/user.type";
   providedIn: 'root'
 })
 export class AppStoreService {
-  private userData: User | null = null;
+  private userData: WritableSignal<User | null> = signal(null);
 
   constructor(private router: Router) {
     const userData = localStorage.getItem('userData');
     if (userData) {
-      this.userData = JSON.parse(userData);
+      this.userData.set(JSON.parse(userData) as User);
     }
   }
 
   async logout(): Promise<void> {
     localStorage.removeItem('serverUrl');
     localStorage.removeItem('token');
-    this.userData = null;
+    this.userData.set(null);
     await this.router.navigate(['../server-choose']);
   }
 
@@ -55,23 +55,23 @@ export class AppStoreService {
 
   // User
   getUserId(): string {
-    return this.userData!._id;
+    return this.userData()!._id;
   }
 
   hasUserRole(role: string): boolean {
-    return this.userData!.roles.includes(role);
+    return this.userData()!.roles.includes(role);
   }
 
   getUserName(): {firstName: string, lastName: string} {
     return {
-      firstName: this.userData!.firstName,
-      lastName: this.userData!.lastName
+      firstName: this.userData()!.firstName,
+      lastName: this.userData()!.lastName
     };
   }
 
   setUser(user: User): void {
     localStorage.setItem('userData', JSON.stringify(user));
-    this.userData = user;
+    this.userData.set(user);
   }
 
 }
