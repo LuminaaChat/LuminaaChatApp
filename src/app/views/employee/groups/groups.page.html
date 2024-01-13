@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" default-href="employee"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/config']">
+        <ion-icon slot="icon-only" src="../assets/heroicons/cog.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Gruppen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--  <ion-header collapse="condense">-->
+  <!--    <ion-toolbar>-->
+  <!--      <ion-title size="large">EmployeeView</ion-title>-->
+  <!--    </ion-toolbar>-->
+  <!--  </ion-header>-->
+
+  <ion-list>
+
+    @for(group of groups(); track group._id) {
+      <app-group-list-item [group]="group" (selectGroup)="selectGroup($event)"></app-group-list-item>
+    }
+
+  </ion-list>
+
+</ion-content>

@@ -4,15 +4,15 @@
     <div class="flex items-center justify-center rounded-full  w-10 h-10" [ngClass]="{'bg-primary text-black': type === 'internal', 'bg-secondary-content': type !== 'internal'}">
 
       @if (type === 'group') {
-      <ion-icon slot="icon-only" src="../assets/heroicons/group.svg"></ion-icon>
+      <ion-icon class="w-6 h-6" slot="icon-only" src="../assets/heroicons/group.svg"></ion-icon>
       }
 
       @if (type === 'direct') {
-      <ion-icon slot="icon-only" src="../assets/heroicons/user.svg"></ion-icon>
+      <ion-icon class="w-6 h-6" slot="icon-only" src="../assets/heroicons/user.svg"></ion-icon>
       }
 
       @if (type === 'internal') {
-      <ion-icon slot="icon-only" src="../assets/heroicons/house.svg"></ion-icon>
+      <ion-icon class="w-6 h-6" slot="icon-only" src="../assets/heroicons/house.svg"></ion-icon>
       }
 
     </div>
