@@ -36,7 +36,7 @@ export const routes: Routes = [
   },
   {
     path: 'employee',
-    loadComponent: () => import('./views/employee/employee.page').then(m => m.EmployeePage),
+    loadChildren: () => import('./views/employee/employee.routes').then(m => m.EMPLOYEE_ROUTES),
     canActivate: [serverChosenGuard, authGuard, employeeGuard]
   },
   {

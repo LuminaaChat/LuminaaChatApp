@@ -2,22 +2,20 @@ import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import {DivisionListItemComponent} from "../../../components/division-list-item/division-list-item.component";
+import {Division} from "../../../../shared/types/division.type";
+import {AppStoreService} from "../../../../shared/services/app-store.service";
+import {DivisionsApiService} from "../../../../shared/services-api/divisions-api.service";
 import {RouterLink} from "@angular/router";
-import {ChatListItemComponent} from "../../components/chat-list-item/chat-list-item.component";
-import {AppStoreService} from "../../../shared/services/app-store.service";
-import {SocketService} from "../../../shared/services/socket.service";
-import {DivisionsApiService} from "../../../shared/services-api/divisions-api.service";
-import {Division} from "../../../shared/types/division.type";
-import {DivisionListItemComponent} from "../../components/division-list-item/division-list-item.component";
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.page.html',
-  styleUrls: ['./employee.page.scss'],
+  selector: 'app-divisions',
+  templateUrl: './divisions.page.html',
+  styleUrls: ['./divisions.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLink, ChatListItemComponent, DivisionListItemComponent]
+  imports: [IonicModule, CommonModule, FormsModule, DivisionListItemComponent, RouterLink]
 })
-export class EmployeePage implements OnInit {
+export class DivisionsPage implements OnInit {
   firstName: string = '';
   lastName: string = '';
   divisions: WritableSignal<Division[]> = signal<Division[]>([]);
@@ -31,6 +29,11 @@ export class EmployeePage implements OnInit {
         this.divisions.set(divisions);
       }
     });
+  }
+
+  selectDivision(division: Division) {
+    this.appStore.setDivision(division);
+    console.log('Division selected: ', division);
   }
 
   ngOnInit() {

@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/config']">
+        <ion-icon slot="icon-only" src="../assets/heroicons/cog.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Hallo {{firstName}} {{lastName}}!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--  <ion-header collapse="condense">-->
+  <!--    <ion-toolbar>-->
+  <!--      <ion-title size="large">EmployeeView</ion-title>-->
+  <!--    </ion-toolbar>-->
+  <!--  </ion-header>-->
+
+  <ion-list>
+
+    @for(division of divisions(); track division._id) {
+      <app-division-list-item [division]="division" (selectDivision)="selectDivision($event)"></app-division-list-item>
+    }
+
+  </ion-list>
+
+</ion-content>

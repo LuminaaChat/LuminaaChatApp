@@ -1,0 +1,32 @@
+<ion-item detail="false" [routerLink]="['../groups']" (click)="onSelect()">
+  <div class="flex justify-between my-2 text-white w-full">
+
+    <div class="w-12 pr-2">
+      <div class="flex items-center justify-center rounded-full  w-10 h-10 bg-primary text-black">
+        <ion-icon class="w-6 h-6" slot="icon-only" src="../assets/heroicons/{{division.icon}}.svg"></ion-icon>
+      </div>
+    </div>
+
+    <div class="flex-grow px-2">
+      <div class="font-semibold">{{division.name}}</div>
+      <div class="text-sm italic font-light line-clamp-1 text-primary">{{division.description}}</div>
+    </div>
+
+    <div class="w-10 flex items-center justify-end text-primary font-extrabold">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </div>
+
+  </div>
+</ion-item>
+
+
+
+
+
+
+
+
+
+
