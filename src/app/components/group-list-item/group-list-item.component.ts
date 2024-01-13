@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Group} from "../../../shared/types/group.type";
 import {IonicModule} from "@ionic/angular";
 import {RouterLink} from "@angular/router";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-group-list-item',
@@ -9,7 +10,8 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./group-list-item.component.scss'],
   imports: [
     IonicModule,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   standalone: true
 })

@@ -2,10 +2,10 @@ import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import {DivisionListItemComponent} from "../../../components/division-list-item/division-list-item.component";
-import {Division} from "../../../../shared/types/division.type";
-import {AppStoreService} from "../../../../shared/services/app-store.service";
-import {DivisionsApiService} from "../../../../shared/services-api/divisions-api.service";
+import {DivisionListItemComponent} from "../../components/division-list-item/division-list-item.component";
+import {Division} from "../../../shared/types/division.type";
+import {AppStoreService} from "../../../shared/services/app-store.service";
+import {DivisionsApiService} from "../../../shared/services-api/divisions-api.service";
 import {RouterLink} from "@angular/router";
 
 @Component({

@@ -2,7 +2,7 @@
   <div class="flex justify-between my-2 text-white w-full">
 
     <div class="w-12 pr-2">
-      <div class="flex items-center justify-center rounded-full  w-10 h-10 bg-primary text-black">
+      <div class="flex items-center justify-center rounded-full  w-10 h-10 bg-primary text-black" [ngClass]="{'bg-primary text-black': group.minRole === 'employee', 'bg-secondary-content': group.minRole !== 'employee'}">
         <ion-icon class="w-6 h-6" slot="icon-only" src="../assets/heroicons/{{group.icon}}.svg"></ion-icon>
       </div>
     </div>

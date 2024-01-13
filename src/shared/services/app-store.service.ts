@@ -24,6 +24,9 @@ export class AppStoreService {
   async logout(): Promise<void> {
     localStorage.removeItem('serverUrl');
     localStorage.removeItem('token');
+    this.selectedDivision.set(null);
+    this.selectedGroup.set(null);
+    this.selectedChannel.set(null);
     this.userData.set(null);
     await this.router.navigate(['../server-choose']);
   }

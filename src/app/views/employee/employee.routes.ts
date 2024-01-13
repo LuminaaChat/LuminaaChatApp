@@ -12,11 +12,11 @@ export const EMPLOYEE_ROUTES: Routes = [
       },
       {
         path: 'groups',
-        loadComponent: () => import('./groups/groups.page').then(m => m.GroupsPage),
+        loadComponent: () => import('../groups/groups.page').then(m => m.GroupsPage),
       },
       {
         path: 'divisions',
-        loadComponent: () => import('./divisions/divisions.page').then(m => m.DivisionsPage),
+        loadComponent: () => import('../divisions/divisions.page').then(m => m.DivisionsPage),
       },
     ]
   },
